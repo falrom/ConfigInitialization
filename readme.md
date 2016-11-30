@@ -1,0 +1,1 @@
+This is a tool for loading parameters from configuration files coded by CPP language.
