@@ -2,6 +2,8 @@
 #define _CONFIG_H_
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <map>
 
@@ -24,6 +26,8 @@ private:
 
 	string filePath;
 	map<string, string> configs;
+	string & removeComment(string & item);
+	string doRC(string tail);
 
 public:
 
