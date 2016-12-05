@@ -2,6 +2,8 @@
 
 This is a tool coded by CPP for loading parameters from configuration files.
 
+（由于Visual Studio限制，源码文件使用GBK编码。）
+
 
 
 ### Features

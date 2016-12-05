@@ -10,23 +10,16 @@ string & Config::removeComment(string & item)
 
 	item = doRC(item);
 
-	if (item.find('=') == string::npos)
+	size_t position = item.find('=');
+	if (position == string::npos)
 	{
 		item = "";
 		return item;
 	}
-
-	bool isEmpty = true;
-	for (auto i : item)
+	else
 	{
-		if (!isspace(i))
-		{
-			isEmpty = false;
-			break;
-		}
+		item.replace(position, 1, " ");
 	}
-	if (isEmpty)
-		item = "";
 
 	return item;
 }
@@ -37,10 +30,13 @@ string Config::doRC(string tail)
 	if (position == string::npos)
 		return tail;
 
-	if (tail[position - 1] == '\\')
+	if (position != 0)
 	{
-		tail.erase(position - 1, 1);
-	}
+		if (tail[position - 1] == '\\')
+		{
+			tail.erase(position - 1, 1);
+		}
+	}	
 	else
 	{
 		tail.erase(position, tail.size() - position);
@@ -72,7 +68,6 @@ bool Config::loadConfigFile(const string & path)
 		istringstream itemStream(item);
 		itemStream >> key;
 		item.replace(item.find(key), key.size(), " ");
-		item.replace(item.find("="), 1,			 "=");
 
 		configs[key] = item;
 	}

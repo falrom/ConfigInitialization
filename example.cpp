@@ -2,7 +2,7 @@
 
 int exampleMain()
 {
-	// å®šä¹‰æ‰€éœ€è¯»å–çš„å˜é‡æˆ–è€…æ•°ç»„
+	// ¶¨ÒåËùĞè¶ÁÈ¡µÄ±äÁ¿»òÕßÊı×é
 	int varInt1 = 0;
 	int varInt2 = 0;
 	double varDouble1 = 0.0;
@@ -11,33 +11,33 @@ int exampleMain()
 	int arrInt[3];
 	double arrDouble[4];
 
-	// å®ä¾‹åŒ–ä¸€ä¸ªConfigç±»çš„å¯¹è±¡
-	Config conf("./test.cfg");
-	// åŠ è½½é…ç½®æ–‡ä»¶
-	if (conf.loadConfigFile())
+	// ÊµÀı»¯Ò»¸öConfigÀàµÄ¶ÔÏó
+	Config conf("example.cfg");
+	// ¼ÓÔØÅäÖÃÎÄ¼ş
+	if (!conf.loadConfigFile())
 	{
-		cerr << "Error: Can't open configuration file." << endl;
+		cerr << "Error: Can not open configuration file." << endl;
 		return 1;
 	}
-	// é€æ¡è¯»å–é…ç½®å˜é‡å’Œæ•°ç»„ã€‚é€šè¿‡å¼‚å¸¸çš„æ–¹å¼æŠ¥é”™ã€‚
+	// ÖğÌõ¶ÁÈ¡ÅäÖÃ±äÁ¿ºÍÊı×é¡£Í¨¹ıÒì³£µÄ·½Ê½±¨´í¡£
 	try
 	{
-		//			é”®å€¼					å­˜å‚¨å˜é‡				æ˜¯å¦å¿…éœ€å®šä¹‰				æ•°ç»„é•¿åº¦ï¼ˆå¦‚æœæ˜¯æ•°ç»„çš„è¯ï¼‰
-		conf.read(	"varInt1",			varInt1																);
-		conf.read(	"varInt2",			varInt2																);
-		conf.read(	"varDouble1",		varDouble1															);
-		conf.read(	"varDouble2",		varDouble2,			NOT_NECESSARY									);
-		conf.read(	"varString",		varString															);
+		//			¼üÖµ					´æ´¢±äÁ¿				ÊÇ·ñ±ØĞè¶¨Òå				Êı×é³¤¶È£¨Èç¹ûÊÇÊı×éµÄ»°£©
+		conf.read(	"varInt1",			&varInt1,			NECESSARY										);
+		conf.read(	"varInt2",			&varInt2															);
+		conf.read(	"varDouble1",		&varDouble1															);
+		conf.read(	"varDouble2",		&varDouble2,		NOT_NECESSARY									);
+		conf.read(	"varString",		&varString															);
 		conf.read(	"arrInt",			arrInt,				NECESSARY,						3				);
 		conf.read(	"arrDouble",		arrDouble,			NECESSARY,						4				);
 	}
 	catch (const runtime_error error)
 	{
-		cerr << error.what << endl;
+		cerr << error.what() << endl;
 		return 1;
 	}
 
-	// éªŒè¯è¾“å‡º
+	// ÑéÖ¤Êä³ö
 	cout << "The value of " << "varInt1"	<< " is " << varInt1	<< endl;
 	cout << "The value of " << "varInt2"	<< " is " << varInt2	<< endl;
 	cout << "The value of " << "varDouble1" << " is " << varDouble1 << endl;
