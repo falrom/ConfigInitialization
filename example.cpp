@@ -22,14 +22,14 @@ int exampleMain()
 	// 逐条读取配置变量和数组。通过异常的方式报错。
 	try
 	{
-		//			键值					存储变量				是否必需定义				数组长度（如果是数组的话）
-		conf.read(	"varInt1",			&varInt1,			NECESSARY										);
-		conf.read(	"varInt2",			&varInt2															);
-		conf.read(	"varDouble1",		&varDouble1															);
-		conf.read(	"varDouble2",		&varDouble2,		NOT_NECESSARY									);
-		conf.read(	"varString",		&varString															);
-		conf.read(	"arrInt",			arrInt,				NECESSARY,						3				);
-		conf.read(	"arrDouble",		arrDouble,			NECESSARY,						4				);
+		//			key					var/arr				requirement			size
+		conf.read(	"varInt1",			&varInt1,			NECESSARY					);
+		conf.read(	"varInt2",			&varInt2										);
+		conf.read(	"varDouble1",		&varDouble1										);
+		conf.read(	"varDouble2",		&varDouble2,		NOT_NECESSARY				);
+		conf.read(	"varString",		&varString										);
+		conf.read(	"arrInt",			arrInt,				NECESSARY,			  3		);
+		conf.read(	"arrDouble",		arrDouble,			NECESSARY,			  4		);
 	}
 	catch (const runtime_error error)
 	{
