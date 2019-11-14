@@ -75,7 +75,7 @@ conf.read("varINT", &var, NOT_NECESSARY);
 
 ```cpp
 int arr[3]; // key = arrINT
-conf.read("arrINT", arrInt, NECESSARY, 3);
+conf.read("arrINT", arr, NECESSARY, 3);
 ```
 
 注意只传入数组名就可以了。数组名本身就是指针。  
